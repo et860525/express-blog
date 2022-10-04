@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
 import RouteBase from './bases/route.base';
 import { ApiRoute } from './main/api/api.routing';
+import postRouter from './main/post/post.routing';
 
 export class AppRoute extends RouteBase {
   private apiRoute!: ApiRoute;
@@ -15,9 +15,7 @@ export class AppRoute extends RouteBase {
   }
 
   protected registerRoute(): void {
-    this.router.get('/', (req: Request, res: Response) => {
-      res.render('index');
-    });
+    this.router.use('/', postRouter);
     this.router.use('/api', this.apiRoute.router);
   }
 }
