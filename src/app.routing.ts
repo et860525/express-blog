@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { RouteBase } from './bases/route.base';
+import RouteBase from './bases/route.base';
 import { ApiRoute } from './main/api/api.routing';
 
 export class AppRoute extends RouteBase {

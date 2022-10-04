@@ -1,18 +1,19 @@
-import { Request, Response, NextFunction } from 'express';
-import { RouteBase } from '../../../bases/route.base';
+import RouteBase from '../../../bases/route.base';
+import PostController from './post.controller';
 
 export default class PostRoute extends RouteBase {
+  protected controller!: PostController;
+
   constructor() {
     super();
   }
 
   protected initial(): void {
+    this.controller = new PostController();
     super.initial();
   }
 
   protected registerRoute(): void {
-    this.router.get('/', (req: Request, res: Response, next: NextFunction) => {
-      res.send({ msg: 'Posts API OK' });
-    });
+    this.router.get('/', this.responseHandler(this.controller.getPosts));
   }
 }

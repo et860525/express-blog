@@ -1,4 +1,4 @@
-import { RouteBase } from '../../bases/route.base';
+import RouteBase from '../../bases/route.base';
 import PostRoute from './post/post.routing';
 
 export class ApiRoute extends RouteBase {
