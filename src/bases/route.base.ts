@@ -29,3 +29,22 @@ export default abstract class RouteBase {
     };
   }
 }
+
+export abstract class ViewRouteBase extends RouteBase {
+  constructor() {
+    super();
+  }
+
+  protected initial(): void {
+    super.initial();
+  }
+
+  protected renderView(method: (req: Request, res: Response, next: NextFunction) => Promise<any>) {
+    return (req: Request, res: Response, next: NextFunction) => {
+      method
+        .call(this.controller, req, res, next)
+        .then((obj) => res.render(obj.view, obj.data))
+        .catch((err) => next(err));
+    };
+  }
+}
