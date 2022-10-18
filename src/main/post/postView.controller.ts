@@ -15,14 +15,19 @@ export class PostViewController {
     const slug = req.params.title;
     const post = await this.postRepo.getPost(slug);
 
-    if (!post) {
-      return { view: 'post', data: { post: post } };
+    // If not assign var, that will get error
+    var title: string = '';
+    var body: string = '';
+
+    if (post) {
+      title = post.title;
+      body = marked(post.body);
+    } else {
+      title = '';
+      body = '';
     }
 
-    const title = post.title;
-    const body = marked(post.body);
-
-    return { view: 'post', data: { post: { title: title, body: body } } };
+    return { view: 'post', data: { title: title, body: body } };
   }
   public async addPost_get() {
     return { view: 'post_form' };

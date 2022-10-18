@@ -1,17 +1,24 @@
 <%- include('header'); -%>
   <div class="container">
-    <h1>Homepage</h1>
-    <h2>
-      <%= count %>
+
+    <h2 class="text-white my-5">
+      This <span style="color: #fec21e;">blog</span> have <%= count %> posts!
     </h2>
-    <% posts.forEach(function(post) { %>
-      <div>
-        <a href="/<%= post.slug %>">
-          <h2>
-            <%= post.title %>
-          </h2>
-        </a>
-      </div>
-      <% }) %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% posts.forEach(function(post) { %>
+        <div class="col">
+          <div class="card text-bg-dark bg-white" style="--bs-bg-opacity: .2">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= post.title %>
+              </h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="/<%= post.slug %>" class="card-link" style="color: #ffe085">Card link</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+    </div>
   </div>
   <%- include('footer'); -%>

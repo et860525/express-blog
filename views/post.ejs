@@ -1,8 +1,11 @@
 <%- include('header'); -%>
-  <div class="container">
-    <h1>
-      <%= post.title %>
+  <div class="container text-white">
+    <h1 class="mt-2">
+      <%= title %>
     </h1>
-    <%- post.body %>
+    <hr>
+    <div class="px-4">
+      <%- body %>
+    </div>
   </div>
   <%- include('footer'); -%>
