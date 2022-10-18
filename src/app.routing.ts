@@ -17,7 +17,7 @@ export class AppRoute extends RouteBase {
   }
 
   protected registerRoute(): void {
-    this.router.use('/posts', this.postRoute.router);
+    this.router.use('/', this.postRoute.router);
     this.router.use('/api', this.apiRoute.router);
   }
 }

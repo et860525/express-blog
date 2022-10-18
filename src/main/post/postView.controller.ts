@@ -1,4 +1,5 @@
-import { Request } from 'express';
+import { Request, Response } from 'express';
+import { marked } from 'marked';
 import { PostRepository } from '../../repositories/post.repository';
 
 export class PostViewController {
@@ -13,14 +14,22 @@ export class PostViewController {
   public async getPost(req: Request) {
     const slug = req.params.title;
     const post = await this.postRepo.getPost(slug);
-    return { view: 'post', data: { post: post } };
+
+    if (!post) {
+      return { view: 'post', data: { post: post } };
+    }
+
+    const title = post.title;
+    const body = marked(post.body);
+
+    return { view: 'post', data: { post: { title: title, body: body } } };
   }
   public async addPost_get() {
     return { view: 'post_form' };
   }
-  public async addPost_post(req: Request) {
+  public async addPost_post(req: Request, res: Response) {
     const { title, body } = req.body;
     const post = await this.postRepo.addPost(title, body);
-    return { view: 'post', data: post };
+    res.redirect('/');
   }
 }

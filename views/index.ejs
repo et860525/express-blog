@@ -1,15 +1,17 @@
 <%- include('header'); -%>
-<div class="container">
-  <h1>Homepage</h1>
-  <h2>
-    <%= count %>
-  </h2>
-  <% posts.forEach(function(post) { %>
-  <a href="posts/<%= post.slug %>">
+  <div class="container">
+    <h1>Homepage</h1>
     <h2>
-      <%= post.title %>
+      <%= count %>
     </h2>
-  </a>
-  <% }) %>
-</div>
-<%- include('footer'); -%>
+    <% posts.forEach(function(post) { %>
+      <div>
+        <a href="/<%= post.slug %>">
+          <h2>
+            <%= post.title %>
+          </h2>
+        </a>
+      </div>
+      <% }) %>
+  </div>
+  <%- include('footer'); -%>
