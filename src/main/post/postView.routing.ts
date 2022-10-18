@@ -15,6 +15,8 @@ export default class PostRoute extends ViewRouteBase {
 
   protected registerRoute() {
     this.router.get('/', this.renderView(this.controller.getPosts));
+    this.router.get('/create/', this.renderView(this.controller.addPost_get));
+    this.router.post('/create/', this.renderView(this.controller.addPost_post));
     this.router.get('/:title', this.renderView(this.controller.getPost));
   }
 }

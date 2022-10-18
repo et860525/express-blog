@@ -11,8 +11,16 @@ export class PostViewController {
     return { view: 'index', data: posts };
   }
   public async getPost(req: Request) {
-    const title = req.params.title;
-    const post = await this.postRepo.getPost(title);
-    return { view: 'post', data: { title: title, post: post } };
+    const slug = req.params.title;
+    const post = await this.postRepo.getPost(slug);
+    return { view: 'post', data: { post: post } };
+  }
+  public async addPost_get() {
+    return { view: 'post_form' };
+  }
+  public async addPost_post(req: Request) {
+    const { title, body } = req.body;
+    const post = await this.postRepo.addPost(title, body);
+    return { view: 'post', data: post };
   }
 }

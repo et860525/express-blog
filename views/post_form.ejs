@@ -1,0 +1,16 @@
+<%- include('header'); -%>
+<div class="container">
+  <h1>Create Post</h1>
+  <form action="" method="post">
+    <div class="mb-3">
+      <label for="postTitle" class="form-label">Title</label>
+      <input type="text" class="form-control" id="postTitle">
+    </div>
+    <div class="mb-3">
+      <label for="postBody" class="form-label">Body</label>
+      <textarea class="form-control" id="postBody" rows="10"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<%- include('footer'); -%>
